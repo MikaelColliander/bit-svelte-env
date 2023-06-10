@@ -1,0 +1,59 @@
+---
+labels: ['svelte', 'aspect', 'env', 'environment']
+description: 'An environment for svelte components.'
+---
+
+### Overview
+
+This environment provides support for creating [Svelte components](https://svelte.dev/) as Bit components. Use this to create and share re-usable ui components written with svelte.
+
+## Create a new workspace using a template
+
+This environment comes with a built in basic workspace template for Svelte components. To use it run:
+```sh
+bit new svelte my-svelte-workspace --env feux.components/svelte
+```
+(note: `my-svelte-workspace` could be any name you choose for your workspace).
+
+`cd` to the project directory and open the `workspace.jsonc` to configure the workspace to your liking.
+
+Create your first component:
+
+```sh
+bit create svelte my-component
+```
+
+Ensure all dependencies are installed:
+
+```sh
+bit install
+```
+
+Start the local dev server:
+
+```sh
+bit start
+```
+
+## Svelte component compositions
+
+## Adding Stencil templates to an existing Bit workspace
+
+```json title="workspace.jsonc"
+{
+  /**
+   * Add Svelte component generators to list of available component templates.
+   **/
+  "teambit.generator/generator": {
+    "envs": [
+      "feux.components/svelte"
+    ]
+  }
+},
+```  
+
+The above line adds the svelte env's templates for scaffolding new svelte components (and custom svelte envs) using `bit`'s templates feature for creating new components which are pre-populated with skeleton
+code. Components created using templates added via this env will automatically have this env assigned as their env (so if you run `bit create svelte` the new component will have `feux.components/svelte` 
+assigned as its env).
+
+Now when you run `bit templates` you'll see the svelte template options and can use them via the `bit create` command.
