@@ -13,25 +13,25 @@
         "scope": "feux.components",
         "version": "0.0.17",
         "mainFile": "index.ts",
-        "rootDir": "dev-envs/svelte"
+        "rootDir": "src/svelte"
     },
     "svelte/compiler/svelte-compiler": {
         "scope": "feux.components",
         "version": "0.0.15",
         "mainFile": "index.ts",
-        "rootDir": "dev-envs/compiler/svelte-compiler"
+        "rootDir": "src/compiler/svelte-compiler"
     },
     "svelte/compiler/svelte-file-transpiler": {
         "scope": "feux.components",
         "version": "0.0.13",
         "mainFile": "index.ts",
-        "rootDir": "dev-envs/svelte-file-transpiler"
+        "rootDir": "src/svelte-file-transpiler"
     },
     "svelte/generators/svelte-templates": {
         "scope": "feux.components",
         "version": "0.0.2",
         "mainFile": "index.ts",
-        "rootDir": "dev-envs/generators"
+        "rootDir": "src/generators"
     },
     "$schema-version": "15.0.0"
 }
