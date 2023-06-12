@@ -11,13 +11,13 @@
 {
     "svelte": {
         "scope": "feux.components",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.ts",
         "rootDir": "src/svelte"
     },
     "svelte/compiler/svelte-compiler": {
         "scope": "feux.components",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.ts",
         "rootDir": "src/compiler/svelte-compiler"
     },
@@ -28,14 +28,14 @@
         "rootDir": "src/svelte-file-transpiler"
     },
     "svelte/compiler/svelte-typescript-multi-compiler": {
-        "scope": "",
-        "version": "",
+        "scope": "feux.components",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "src/compiler/svelte-typescript-multi-compiler"
     },
     "svelte/generators/svelte-templates": {
         "scope": "feux.components",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "src/generators"
     },

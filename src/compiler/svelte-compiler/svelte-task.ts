@@ -18,7 +18,7 @@ export const SvelteCompilationTask = {
     return CompilerTask.from({
       name,
       description,
-      compiler: SvelteCompiler.from(),
+      compiler: SvelteCompiler.from({}),
     });
   },
 };

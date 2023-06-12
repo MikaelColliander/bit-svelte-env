@@ -162,7 +162,7 @@ export class SvelteCompiler implements Compiler {
     return replaceFileExtToJs(filePath);
   }
 
-  static from(options: SvelteCompilerOptions): EnvHandler<Compiler> {
+  static from({}: SvelteCompilerOptions): EnvHandler<Compiler> {
     return (context: EnvContext) => {
       const name = 'svelte-compiler';
       const logger = context.createLogger(name);
