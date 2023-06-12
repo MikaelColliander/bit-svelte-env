@@ -4,7 +4,7 @@ export const Logo = () => (
   <div style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
     <img
       style={{ width: 70 }}
-      src="https://www.iconbolt.com/iconsets/teenyicons-solid/svelte.svg"
+      src="https://static.bit.dev/brands/logo-svelte.svg"
       alt="svelte logo"
     />
   </div>

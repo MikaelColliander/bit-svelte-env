@@ -7,9 +7,9 @@ import { TypeScriptExtractor } from "@teambit/typescript";
 import { ReactPreview } from '@teambit/preview.react-preview';
 import { EnvHandler } from '@teambit/envs';
 import {
-  SvelteCompiler,
-  SvelteCompilationTask,
-} from '@feux/components.svelte.compiler.svelte-compiler';
+  SvelteTypescriptMultiCompiler,
+  SvelteTypescriptCompilationTask,
+} from '@feux/components.svelte.compiler.svelte-typescript-multi-compiler';
 import { ESLintLinter, EslintTask } from '@teambit/defender.eslint-linter';
 import { JestTask, JestTester } from "@teambit/defender.jest-tester";
 import { PrettierFormatter } from '@teambit/defender.prettier-formatter';
@@ -18,6 +18,7 @@ import { Pipeline } from "@teambit/builder";
 import { Preview } from '@teambit/preview';
 import { SchemaExtractor } from "@teambit/schema";
 import { SvelteEnvInterface } from './svelte-env-interface';
+const tsconfig = require('./config/tsconfig.json');
 // import { babelCommonTransformation } from "./config/webpack.config";
 // import { PackageGenerator } from "@teambit/pkg";
 
@@ -31,14 +32,19 @@ export class SvelteEnv extends ReactEnv implements SvelteEnvInterface {
    * icon for the env. use this to build a more friendly env.
    * uses react by default.
    */
-  icon = 'https://www.iconbolt.com/iconsets/teenyicons-solid/svelte.svg';
+  icon = '"https://static.bit.dev/brands/logo-svelte.svg"';
 
   /**
    * return an instance of a Compiler. use components like typescript-compiler (teambit.typescript/typescript-compiler)
    * or our babel-compiler (teambit.compilation/babel-compiler).
    */
   compiler(): EnvHandler<Compiler> {
-    return SvelteCompiler.from();
+    return SvelteTypescriptMultiCompiler.from({
+      svelteCompilerOptions: {},
+      typescriptCompilerOptions: {
+        tsconfig: require.resolve('./config/tsconfig.json'),
+      },
+    });
   }
 
   /**
@@ -120,7 +126,12 @@ export class SvelteEnv extends ReactEnv implements SvelteEnvInterface {
   build() {
     // :TODO fix build task
     return Pipeline.from([
-      SvelteCompilationTask.from({}),
+      SvelteTypescriptCompilationTask.from({
+        svelteCompilerOptions: {},
+        typescriptCompilerOptions: {
+          tsconfig: require.resolve('./config/tsconfig.json'),
+        }
+      }),
       EslintTask.from({
         tsconfig: require.resolve("./config/tsconfig.json"),
         configPath: require.resolve("./config/eslintrc.js"),

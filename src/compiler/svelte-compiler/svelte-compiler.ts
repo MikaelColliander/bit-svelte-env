@@ -10,13 +10,10 @@ import { Logger } from '@teambit/logger';
 import { EnvContext, EnvHandler } from '@teambit/envs';
 import { TranspileContext } from '@teambit/compilation.modules.file-transpiler-common';
 import { isFileSupported, transpileFileContent, transpileFilePathAsync, replaceFileExtToJs } from '@feux/components.svelte.compiler.svelte-file-transpiler';
-// import { SvelteCompilerOptions } from './svelte-compiler-options';
+import { SvelteCompilerOptions } from './svelte-compiler-options';
 const svelte = require('svelte/compiler');
 
-// const defaultTranspileOptions: TranspileOptions = {
-//   // @ts-ignore stencil docs say to set this to null, even though it's not part of the type they define for this field... -\(°°)/-
-//   styleImportData: null
-// }
+// const defaultTranspileOptions: TranspileOptions = {}
 
 export class SvelteCompiler implements Compiler {
   distDir: string;
@@ -28,7 +25,7 @@ export class SvelteCompiler implements Compiler {
   constructor(
     readonly id: string,
     private logger: Logger,
-    // private stencilOptions: StencilCompilerOptions,
+    private svelteOptions: SvelteCompilerOptions,
     private svelteModule = svelte
   ) {
     this.distDir = 'dist';
@@ -156,16 +153,16 @@ export class SvelteCompiler implements Compiler {
     return isFileSupported(filePath);
   }
 
-  // displayConfig() {
-  //   return JSON.stringify(this.stencilOptions || {}, null, 2);
-  // }
+  displayConfig() {
+    return JSON.stringify(this.svelteOptions || {}, null, 2);
+  }
 
   private replaceFileExtToJs(filePath: string): string {
     if (!this.isFileSupported(filePath)) return filePath;
     return replaceFileExtToJs(filePath);
   }
 
-  static from(): EnvHandler<Compiler> {
+  static from(options: SvelteCompilerOptions): EnvHandler<Compiler> {
     return (context: EnvContext) => {
       const name = 'svelte-compiler';
       const logger = context.createLogger(name);

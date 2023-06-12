@@ -19,6 +19,9 @@ importers:
       '@teambit/compilation.compiler-task':
         specifier: ^0.0.4
         version: 0.0.4
+      '@teambit/compilation.compilers.multi-compiler':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@teambit/compilation.modules.file-transpiler-common':
         specifier: ^0.0.2
         version: 0.0.2
@@ -52,6 +55,9 @@ importers:
       '@teambit/react.react-env':
         specifier: 0.0.65
         version: 0.0.65(@teambit/legacy@node_modules+@teambit+legacy)(@types/node@12.20.4)(@types/react@17.0.60)
+      '@teambit/typescript.typescript-compiler':
+        specifier: ^0.0.9
+        version: 0.0.9(@teambit/legacy@node_modules+@teambit+legacy)
       '@teambit/web-components.stencil.compiler.stencil-compiler':
         specifier: 1.0.3
         version: 1.0.3(react@18.2.0)
@@ -120,13 +126,15 @@ importers:
         specifier: 5.9.5
         version: registry.npmjs.org/@types/testing-library__jest-dom@5.9.5
 
-  dev-envs/compiler/svelte-compiler: {}
+  src/compiler/svelte-compiler: {}
 
-  dev-envs/generators: {}
+  src/compiler/svelte-typescript-multi-compiler: {}
 
-  dev-envs/svelte: {}
+  src/generators: {}
 
-  dev-envs/svelte-file-transpiler: {}
+  src/svelte: {}
+
+  src/svelte-file-transpiler: {}
 
 packages:
 
@@ -196,6 +204,13 @@ packages:
     dependencies:
       '@teambit/toolbox.fs.hard-link-directory': registry.npmjs.org/@teambit/toolbox.fs.hard-link-directory@0.0.9
       fs-extra: registry.npmjs.org/fs-extra@10.1.0
+    dev: false
+
+  /@teambit/compilation.compilers.multi-compiler@0.0.2:
+    resolution: {integrity: sha1-mq1K50m8e5z0u19dIBW2/sF/5aY=, tarball: https://node.bit.cloud/@teambit/compilation.compilers.multi-compiler/-/@teambit-compilation.compilers.multi-compiler-0.0.2.tgz}
+    dependencies:
+      '@teambit/pipelines.modules.merge-component-results': registry.npmjs.org/@teambit/pipelines.modules.merge-component-results@0.0.492
+      p-map-series: registry.npmjs.org/p-map-series@2.1.0
     dev: false
 
   /@teambit/compilation.modules.file-transpiler-common@0.0.1:
@@ -7824,6 +7839,15 @@ packages:
       core-js: registry.npmjs.org/core-js@3.30.2
       react: registry.npmjs.org/react@18.2.0
       react-dom: registry.npmjs.org/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmjs.org/@teambit/pipelines.modules.merge-component-results@0.0.492:
+    resolution: {integrity: sha512-IEYCmCqX3eavN5wk+dyS9kWjVxLpyWhHYDF9SIkK5GzTTI7vizgjAwbMAvdvMKRoR9hr+OUeFhHMJB25YwRw+A==, registry: https://node.bit.cloud/, tarball: https://registry.npmjs.org/@teambit/pipelines.modules.merge-component-results/-/pipelines.modules.merge-component-results-0.0.492.tgz}
+    name: '@teambit/pipelines.modules.merge-component-results'
+    version: 0.0.492
+    engines: {node: '>=12.22.0'}
+    dependencies:
+      lodash: registry.npmjs.org/lodash@4.17.21
     dev: false
 
   registry.npmjs.org/@teambit/react.babel.bit-react-transformer@0.0.525(react-dom@18.2.0)(react@18.2.0):

@@ -27,6 +27,12 @@
         "mainFile": "index.ts",
         "rootDir": "src/svelte-file-transpiler"
     },
+    "svelte/compiler/svelte-typescript-multi-compiler": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "src/compiler/svelte-typescript-multi-compiler"
+    },
     "svelte/generators/svelte-templates": {
         "scope": "feux.components",
         "version": "0.0.2",
